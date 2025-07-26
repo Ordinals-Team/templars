@@ -88,7 +88,7 @@ export function MainNav() {
         <div className="flex items-center gap-10">
           {/* Social */}
           <a
-            href="https://x.com/punkameleonbtc"
+            href="https://x.com/templarsbtc"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"

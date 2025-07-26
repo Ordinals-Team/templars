@@ -43,7 +43,7 @@ export function SiteFooter() {
         {/* 2c) X ikonu (Frame 7169) @ center, top:56px */}
         <div className="absolute left-1/2 top-[90px] -translate-x-1/2">
           <Link
-            href="https://x.com/punkameleonbtc"
+            href="https://x.com/templarsbtc"
             target="_blank"
             aria-label="X"
             className="
