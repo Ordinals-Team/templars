@@ -3,19 +3,15 @@
 
 import HeroSection from "@/components/hero";
 import CheckerSection from "@/components/checker";
+import AboutSection from "@/components/about";
+import GallerySection from "@/components/gallery";
 export default function Page() {
   return (
     <>
       <HeroSection />
       <CheckerSection />
-      {/* 
-        İleride sırasıyla şu şekilde diğer bölümleri ekleyebilirsin:
-        <AboutSection />
-        <GallerySection />
-        
-      
-      */}
-     
+      <AboutSection />
+      <GallerySection />
     </>
   );
 }

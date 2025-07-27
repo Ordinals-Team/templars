@@ -110,7 +110,7 @@ export function MainNav() {
             className="
               hidden lg:flex items-center justify-center
               w-[139px] h-[39px]
-              bg-[#E9731D] text-[#100A0A]
+              bg-[#E9731D] text-[#FFFFFF]
               font-bold uppercase text-sm tracking-wider
               rounded-md shadow-md
               transition-transform hover:scale-105 hover:opacity-90
@@ -156,7 +156,7 @@ export function MainNav() {
       {open && (
         <nav className="fixed inset-0 top-[96px] z-30 flex flex-col items-center gap-6 p-6 bg-black">
           <a
-            href="https://x.com/punkameleonbtc"
+            href="https://x.com/templarsbtc"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"
@@ -176,7 +176,7 @@ export function MainNav() {
             className="
               flex items-center justify-center
               w-[139px] h-[39px]
-              bg-[#E9731D] text-[#100A0A]
+              bg-[#E9731D] text-[#FFFFFF]
               font-bold uppercase text-sm tracking-wider
               rounded-md shadow-md
               transition-transform hover:scale-105 hover:opacity-90
