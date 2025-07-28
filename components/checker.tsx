@@ -1,4 +1,3 @@
-// components/CheckerSection.tsx
 "use client";
 
 // import React, { useState } from "react";
@@ -125,6 +124,15 @@ export default function CheckerSection() {
         </div>
       )}
       */}
+      <div
+  aria-hidden
+  className="
+    pointer-events-none select-none
+    absolute inset-x-0 bottom-0   
+    h-[20px]                    
+    bg-gradient-to-t from-[#01020E] to-transparent
+  "
+/>
     </section>
   );
 }

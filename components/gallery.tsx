@@ -1,124 +1,82 @@
-// components/GallerySection.tsx
-"use client";
+'use client';
 
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function GallerySection() {
   const frame5 = [
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (3).png",
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (4).png",
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (5).png",
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (6).png",
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (7).png",
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.55.png",
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (3).png',
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (4).png',
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (5).png',
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (6).png',
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (7).png',
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.55.png',
   ];
 
   const frame4 = [
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56.png",
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.57 (1).png",
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.57 (2).png",
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.57 (3).png",
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (2).png",
-    "/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (1).png",
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56.png',
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.57 (1).png',
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.57 (2).png',
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.57 (3).png',
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (2).png',
+    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (1).png',
   ];
+
+  /* frame */
+  const Tile = ({ src, alt }: { src: string; alt: string }) => (
+    <div
+      className="
+        relative shrink-0 snap-start 
+        w-[80px] h-[80px]          /* <640px */
+        sm:w-[145px] sm:h-[145px]    /* 640–1023 */
+        lg:w-[240px] lg:h-[240px]    /* ≥1024   */
+      "
+    >
+      <Image src={src} alt={alt} fill className="object-cover" priority />
+    </div>
+  );
+
+  /* orange stripe */
+  const Strip = ({ imgs, z }: { imgs: string[]; z: number }) => (
+    <div
+      className={`
+        relative w-screen max-w-none
+        rotate-[-3.28deg] origin-center
+        z-[${z}]
+      `}
+    >
+      <div
+        className="
+          flex gap-4 px-4 py-4
+          bg-[#E9731D] items-start
+          overflow-x-auto lg:overflow-x-visible
+          snap-x snap-mandatory scrollbar-hide
+        "
+      >
+        {imgs.map((src, i) => (
+          <Tile key={i} src={src} alt={`f${z === 20 ? 4 : 5}-${i}`} />
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <section
       id="gallery"
       className="
         relative w-full bg-[#01020E]
-        overflow-x-hidden overflow-y-hidden    /* yatay scroll, dikey gizle */
-        pt-48 pb-12
-        z-50                                /* footer’ın üstünde */
+        overflow-x-hidden overflow-y-visible
+        pt-44 pb-24
+        z-50
       "
     >
-      {/** MOBILE: sadece iki kare, yatay kaydırılabilir **/}
-      <div
-        className="
-          flex justify-between px-4
-          sm:hidden
-          overflow-x-auto                  /* lokal yatay scroll */
-          scrollbar-hide                   /* scrollbar gizle */
-          snap-x snap-mandatory            /* kaydırma snap */
-          gap-4
-        "
-      >
-        <div className="w-[240px] h-[240px] flex-none snap-start">
-          <Image
-            src={frame5[0]}
-            alt="mobile-left"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="w-[240px] h-[240px] flex-none snap-start">
-          <Image
-            src={frame4[frame4.length - 1]}
-            alt="mobile-right"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-      </div>
+      {/*  Frame 5 */}
+      <Strip imgs={frame5} z={10} />
 
-      {/** DESKTOP: üst üste iki frame **/}
-      <div className="hidden sm:flex flex-col items-center space-y-12">
-        {/** FRAME 5 **/}
-        <div className="relative mx-auto rotate-[-3.28deg] z-10">
-          <div
-            className="
-              w-[90vw] lg:w-[1552px] h-[272px]
-              flex items-start gap-4
-              px-4 lg:px-0 py-4
-              bg-[#E9731D]
-            "
-          >
-            {frame5.map((src, i) => (
-              <div
-                key={i}
-                className="relative w-[240px] h-[240px] flex-none"
-              >
-                <Image
-                  src={src}
-                  alt={`f5-${i}`}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+      
+      <div className="h-12 sm:h-16 lg:h-20" />
 
-        {/** FRAME 4 **/}
-        <div className="relative mx-auto rotate-[-3.28deg] z-20 -mb-64 lg:-mb-80">
-          <div
-            className="
-              w-[90vw] lg:w-[1552px] h-[272px]
-              flex items-start gap-4
-              px-4 lg:px-0 py-4
-              bg-[#E9731D]
-            "
-          >
-            {frame4.map((src, i) => (
-              <div
-                key={i}
-                className="relative w-[240px] h-[240px] flex-none"
-              >
-                <Image
-                  src={src}
-                  alt={`f4-${i}`}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Frame 4 */}
+      <Strip imgs={frame4} z={20} />
     </section>
   );
 }

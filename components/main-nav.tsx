@@ -1,4 +1,3 @@
-// components/MainNav.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -78,7 +77,7 @@ export function MainNav() {
         <div className="flex items-center gap-6">
           {/* Social */}
           <a
-            href="https://x.com/punkameleonbtc"
+            href="https://x.com/templarsbtc"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X"
@@ -127,7 +126,7 @@ export function MainNav() {
         </div>
       </div>
 
-      {/* MOBILE DRAWER: yalnızca KAPAT, TEMPLARS ve X link */}
+      {/* MOBILE DRAWER:TEMPLARS amd X link */}
       {open && (
         <aside className="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#0D1B2A] shadow-xl z-50">
           <div className="flex justify-end p-4">
@@ -147,7 +146,7 @@ export function MainNav() {
               TEMPLARS
             </button>
             <a
-              href="https://x.com/punkameleonbtc"
+              href="https://x.com/templarsbtc"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="X"
