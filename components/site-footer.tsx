@@ -11,7 +11,7 @@ const xIcon   = '/images/fi_5968958.png'
 
 /* 2 + 2 hero */
 const groupLeft = [
-  '/images/WhatsApp Image 2025-07-21 at 12.00.57 (3).png',
+  '/images/WhatsApp Image 2025-07-21 at 12.png',
   '/images/WhatsApp Image 2025-07-21 at 12.00.38.png',
 ]
 const groupRight = [
