@@ -2,6 +2,7 @@
 
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
+import scrollbarHide from "tailwind-scrollbar-hide";
 
 const config: Config = {
   darkMode: ["class"],
@@ -12,10 +13,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      
       fontFamily: {
-      rubik: ['"Rubik Wet Paint"', "cursive"],
-    },
+        rubik: ['"Rubik Wet Paint"', "cursive"],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -65,7 +65,10 @@ const config: Config = {
       }
     }
   },
-  plugins: [tailwindcssAnimate]
+  plugins: [
+    tailwindcssAnimate,
+    scrollbarHide                  // scrollbar-hide plugin eklendi
+  ]
 };
 
 export default config;

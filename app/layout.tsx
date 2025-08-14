@@ -1,4 +1,3 @@
-// app/layout.tsx
 import "./globals.css";
 import { MainNav } from "@/components/main-nav";
 import { SiteFooter } from "@/components/site-footer";
