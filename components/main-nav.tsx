@@ -98,7 +98,7 @@ export function MainNav() {
             onClick={() => setAlertOpen(true)}
             className="hidden lg:flex items-center justify-center w-[139px] h-[39px] bg-gradient-to-r from-[#F16B04] to-[#FFD727] text-white font-bold uppercase text-sm tracking-wider rounded-md shadow-lg"
           >
-            TEMPLARS
+            $KNIGHT
           </button>
 
           {/* Mobile burger */}
@@ -143,7 +143,7 @@ export function MainNav() {
               onClick={() => { setAlertOpen(true); setOpen(false); }}
               className="w-full py-3 bg-gradient-to-r from-[#F16B04] to-[#FFD727] text-black font-bold uppercase rounded-md"
             >
-              TEMPLARS
+              $KNIGHT
             </button>
             <a
               href="https://x.com/templarsbtc"
@@ -171,7 +171,7 @@ export function MainNav() {
         <div className="relative p-8 text-center">
           <h2 className="font-pixel uppercase text-[#FFD727] text-3xl sm:text-4xl mb-4
                          [text-shadow:-3px_4px_0_#801D00]">
-            Coming Soon
+            Coming Soon - Block 912,690 (~September 2)
           </h2>
 
           <button
