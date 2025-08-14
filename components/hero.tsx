@@ -1,12 +1,11 @@
+// components/HeroSection.tsx
 'use client'
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 export default function HeroSection() {
- 
   /*  images */
-  
   const left = [
     '/images/WhatsApp Image 2025-07-21 at 12.00.43.png',
     '/images/WhatsApp Image 2025-07-21 at 12.00.43 (1).png',
@@ -18,27 +17,27 @@ export default function HeroSection() {
     '/images/WhatsApp Image 2025-07-21 at 12.00.57.png',
   ]
 
-  /*  72 hours */
+  /*  sabit hedef tarih (UTC) */
+  const TARGET_MS = new Date('2025-08-16T15:00:00Z').getTime()
 
-  const [target] = useState(() => Date.now() + 72 * 60 * 60 * 1000)
-  const [leftSecs, setLeftSecs] = useState(() =>
-    Math.max(0, Math.floor((target - Date.now()) / 1000)),
-  )
+  // SSR uyumlu: ilk render'da 0 göster, mount'ta gerçek değeri hesapla
+  const [leftSecs, setLeftSecs] = useState<number>(0)
 
   useEffect(() => {
-    const id = setInterval(
-      () => setLeftSecs((s) => Math.max(0, s - 1)),
-      1_000,
-    )
+    const update = () => {
+      const diff = Math.max(0, Math.floor((TARGET_MS - Date.now()) / 1000))
+      setLeftSecs(diff)
+    }
+    update() // mount anında hesapla
+    const id = setInterval(update, 1000)
     return () => clearInterval(id)
-  }, [])
+  }, [TARGET_MS])
 
-  const days =  String(Math.floor(leftSecs / 86_400)).padStart(2, '0')
-  const hrs  =  String(Math.floor((leftSecs % 86_400) / 3_600)).padStart(2, '0')
-  const mins =  String(Math.floor((leftSecs % 3_600) / 60)).padStart(2, '0')
-  const secs =  String(leftSecs % 60).padStart(2, '0')
+  const days = String(Math.floor(leftSecs / 86_400)).padStart(2, '0')
+  const hrs = String(Math.floor((leftSecs % 86_400) / 3_600)).padStart(2, '0')
+  const mins = String(Math.floor((leftSecs % 3_600) / 60)).padStart(2, '0')
+  const secs = String(leftSecs % 60).padStart(2, '0')
 
- 
   const digitCls =
     'font-pixel font-bold uppercase text-[#E9731D]' +
     ' [text-shadow:-4px_5px_0_#CF3912]' +
@@ -55,14 +54,14 @@ export default function HeroSection() {
 
   const Block = ({ v, lbl }: { v: string; lbl: string }) => (
     <div className="flex flex-col items-center w-[17vw] sm:w-[12vw] md:w-[8vw] max-w-[98px]">
-      <span className={digitCls}>{v}</span>
+      {/* suppressHydrationWarning: SSR-CSR metin farkını tolere eder */}
+      <span className={digitCls} suppressHydrationWarning>
+        {v}
+      </span>
       <span className={labelCls}>{lbl}</span>
     </div>
   )
 
-  /* ———————————————————————————————————————— */
-  /*  Render                                                             */
-  /* ———————————————————————————————————————— */
   return (
     <section id="hero" className="relative w-full h-screen overflow-hidden snap-start">
       {/* BG */}
@@ -75,16 +74,17 @@ export default function HeroSection() {
       />
 
       {/* header count */}
-                  <div
-          className="
+      <div
+        className="
             absolute inset-x-0
-            top-[42%]        /* mobile: slightly below natural centre */
-            sm:top-[40%]     /* tablet  */
-            lg:top-[36%]     /* desktop */
-            -translate-y-1/2 /* keep self‑centred on that anchor      */
+            top-[42%]
+            sm:top-[40%]
+            lg:top-[36%]
+            -translate-y-1/2
             flex flex-col items-center px-4 text-center
-          ">   
-           <h1
+          "
+      >
+        <h1
           className="
             font-pixel uppercase text-white leading-tight
             text-[clamp(32px,9vw,96px)] sm:text-[64px] lg:text-[72px]
@@ -93,83 +93,83 @@ export default function HeroSection() {
         >
           Tempered&nbsp;by&nbsp;Fire <br /> Bound&nbsp;by&nbsp;Oath
         </h1>
-        
+
         <p className="mt-5 font-pixel uppercase text-white text-[clamp(12px,4vw,24px)] sm:text-xl lg:text-[32px]">
           We serve no king, only the flame beneath.
         </p>
 
         <div className="mt-4 flex items-start gap-[2vw] sm:gap-[3vw] lg:gap-6">
-          <Block v={days}  lbl="Day"     />
+          <Block v={days} lbl="Day" />
           <span className={colonCls}>:</span>
-          <Block v={hrs}   lbl="Hours"   />
+          <Block v={hrs} lbl="Hours" />
           <span className={colonCls}>:</span>
-          <Block v={mins}  lbl="Minutes" />
+          <Block v={mins} lbl="Minutes" />
           <span className={colonCls}>:</span>
-          <Block v={secs}  lbl="Seconds" />
+          <Block v={secs} lbl="Seconds" />
         </div>
-
       </div>
 
-     {/* characters ---------------------------------------------------- */}
-<div
-  className="
+      {/* characters */}
+      <div
+        className="
     absolute bottom-[0vh] inset-x-0
     flex justify-center items-end gap-[6vw] sm:gap-[5vw] lg:gap-12
   "
->
-  {/* left --------------------------------------------------------- */}
-  <div
-    className="
+      >
+        {/* left */}
+        <div
+          className="
       flex items-end
       -space-x-[4vw] sm:-space-x-[3vw] lg:-space-x-8
-      lg:-translate-x-4                /*  =  -16 px sola */
+      lg:-translate-x-4
     "
-  >
-    {left.map((src, i) => (
-      <div
-        key={i}
-        className="
+        >
+          {left.map((src, i) => (
+            <div
+              key={i}
+              className="
           relative aspect-square
           w-[26vw]     sm:w-[18vw]     lg:w-[16vw]   
           max-w-[150px] sm:max-w-[170px] lg:max-w-[200px]
         "
-      >
-        <Image src={encodeURI(src)} alt={`left-${i}`} fill priority className="object-contain"/>
-      </div>
-    ))}
-  </div>
+            >
+              <Image src={encodeURI(src)} alt={`left-${i}`} fill priority className="object-contain" />
+            </div>
+          ))}
+        </div>
 
-  {/* right --------------------------------------------------------- */}
-  <div
-    className="
+        {/* right */}
+        <div
+          className="
       flex items-end
       -space-x-[4vw] sm:-space-x-[3vw] lg:-space-x-8
-      lg:translate-x-4                
+      lg:translate-x-4
     "
-  >
-    {right.map((src, i) => (
-      <div
-        key={i}
-        className="
+        >
+          {right.map((src, i) => (
+            <div
+              key={i}
+              className="
           relative aspect-square
           w-[26vw]     sm:w-[18vw]     lg:w-[16vw]
           max-w-[150px] sm:max-w-[170px] lg:max-w-[200px]
         "
-      >
-        <Image src={encodeURI(src)} alt={`right-${i}`} fill priority className="object-contain"/>
+            >
+              <Image src={encodeURI(src)} alt={`right-${i}`} fill priority className="object-contain" />
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
-<div
-  aria-hidden
-  className="
+
+      <div
+        aria-hidden
+        className="
     pointer-events-none select-none
     absolute inset-x-0 bottom-0   
     h-[10px]                     
     bg-gradient-to-t from-[#01020E] to-transparent
   "
-/>
+      />
     </section>
   )
 }

@@ -1,7 +1,9 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 const LETTERS = ["T","E","M","P","L","A","R","S"];
 const LAYERS = [
   "bg-[#2C2930]",
@@ -11,19 +13,23 @@ const LAYERS = [
   "bg-[#F9CB82]",
   "bg-clip-text text-transparent bg-[linear-gradient(0deg,#F16B04_-3.68%,#FFD727_100.18%)]",
 ];
+
 export function MainNav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
+
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
   const goHome = () => {
     setOpen(false);
     window.scrollTo(0, 0);
   };
+
   return (
     <div className="relative w-full">
       {/* NAV BAR */}
@@ -66,6 +72,7 @@ export function MainNav() {
             </div>
           ))}
         </Link>
+
         {/* RIGHT SIDE */}
         <div className="flex items-center gap-6">
           {/* Social */}
@@ -85,13 +92,15 @@ export function MainNav() {
               priority
             />
           </a>
+
           {/* Desktop button */}
           <button
             onClick={() => setAlertOpen(true)}
             className="hidden lg:flex items-center justify-center w-[139px] h-[39px] bg-gradient-to-r from-[#F16B04] to-[#FFD727] text-white font-bold uppercase text-sm tracking-wider rounded-md shadow-lg"
           >
-            $KNIGHT
+            TEMPLARS
           </button>
+
           {/* Mobile burger */}
           <button
             onClick={() => setOpen((v) => !v)}
@@ -116,6 +125,7 @@ export function MainNav() {
           </button>
         </div>
       </div>
+
       {/* MOBILE DRAWER:TEMPLARS amd X link */}
       {open && (
         <aside className="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#0D1B2A] shadow-xl z-50">
@@ -133,7 +143,7 @@ export function MainNav() {
               onClick={() => { setAlertOpen(true); setOpen(false); }}
               className="w-full py-3 bg-gradient-to-r from-[#F16B04] to-[#FFD727] text-black font-bold uppercase rounded-md"
             >
-              $KNIGHT
+              TEMPLARS
             </button>
             <a
               href="https://x.com/templarsbtc"
@@ -147,6 +157,7 @@ export function MainNav() {
           </div>
         </aside>
       )}
+
 {/* COMING SOON MODAL (gradient frame + dark body) */}
 {alertOpen && (
   <div className="fixed inset-0 z-60 grid place-items-center bg-black/80 p-6">
@@ -162,6 +173,7 @@ export function MainNav() {
                          [text-shadow:-3px_4px_0_#801D00]">
             Coming Soon
           </h2>
+
           <button
             onClick={() => setAlertOpen(false)}
             className="mt-2 px-8 py-3 rounded-md font-pixel uppercase
@@ -175,6 +187,7 @@ export function MainNav() {
     </div>
   </div>
 )}
+
     </div>
   );
 }
