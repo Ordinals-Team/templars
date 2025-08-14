@@ -4,21 +4,25 @@ import Image from 'next/image';
 
 export default function GallerySection() {
   const frame5 = [
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (3).png',
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (4).png',
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (5).png',
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (6).png',
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (7).png',
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.55.png',
+    '/images/gallery/gallery-1.png',
+    '/images/gallery/gallery-2.png',
+    '/images/gallery/gallery-3.png',
+    '/images/gallery/gallery-4.png',
+    '/images/gallery/gallery-5.png',
+    '/images/gallery/gallery-6.png',
+    '/images/gallery/gallery-13.png',
+    '/images/gallery/gallery-15.png',
   ];
 
   const frame4 = [
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56.png',
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.57 (1).png',
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.57 (2).png',
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.57 (3).png',
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (2).png',
-    '/images/gallery/WhatsApp Image 2025-07-21 at 12.00.56 (1).png',
+    '/images/gallery/gallery-7.png',
+    '/images/gallery/gallery-8.png',
+    '/images/gallery/gallery-9.png',
+    '/images/gallery/gallery-10.png',
+    '/images/gallery/gallery-11.png',
+    '/images/gallery/gallery-12.png',
+    '/images/gallery/gallery-14.png',
+    '/images/gallery/gallery-16.png',
   ];
 
   /* frame */
@@ -66,7 +70,6 @@ export default function GallerySection() {
         relative w-full bg-[#01020E]
         overflow-x-hidden overflow-y-visible
         pt-44 pb-24
-        z-50
       "
     >
       {/*  Frame 5 */}

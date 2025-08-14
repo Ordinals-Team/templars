@@ -17,15 +17,15 @@ export const metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  metadataBase: new URL("https://www.punkameleons.com"),
-  keywords: ["punkameleons", "punk", "brc2.0", "chameleon", "bitcoin nfts", "ordinals", "nft", "$chamel"],
+  metadataBase: new URL("https://www.templars.com"),
+  keywords: ["templars", "knight", "brc2.0", "brc 2.0 token", "bitcoin nfts", "ordinals", "nft", "$knight"],
   authors: [
     {
-      name: "punkameleons",
-      url: "https://punkameleons.com",
+      name: "templars",
+      url: "https://templars.com",
     },
   ],
-  creator: "punkameleons",
+  creator: "templars",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -40,7 +40,7 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [`${siteConfig.url}/og.jpg`],
-    creator: "@punkameleonbtc",
+    creator: "@templarsbtc",
   },
   icons: {
     icon: "/favicon.ico",

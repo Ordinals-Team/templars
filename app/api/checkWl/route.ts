@@ -16,7 +16,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const docRef = doc(db, "punkameleons", address);
+    const docRef = doc(db, "templars", address);
     const docSnap = await getDoc(docRef);
 
     // If the doc doesn't exist, return success with data: null.
