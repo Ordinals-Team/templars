@@ -83,6 +83,14 @@ export function SiteFooter() {
             width={126}
             height={35}
             priority
+          />
+        </div>
+        {/* 2c) X ikonu (Frame 7169) @ center, top:56px */}
+        <div className="absolute left-1/2 top-[90px] -translate-x-1/2">
+          <Link
+            href="https://x.com/templarsbtc"
+            target="_blank"
+            aria-label="X"
             className="
               absolute left-1/2 top-1/2 w-[42vw] max-[375px]:w-[48vw] sm:w-[126px]
               -translate-x-1/2 -translate-y-1/2
